@@ -971,6 +971,37 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   };
 }
 
+export interface ApiAudioAudio extends Schema.CollectionType {
+  collectionName: 'audios';
+  info: {
+    singularName: 'audio';
+    pluralName: 'audios';
+    displayName: 'Audio';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    Title: Attribute.String;
+    File: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::audio.audio',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::audio.audio',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProgramProgram extends Schema.CollectionType {
   collectionName: 'programs';
   info: {
@@ -996,6 +1027,18 @@ export interface ApiProgramProgram extends Schema.CollectionType {
         };
       }>;
     Cover: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Description: Attribute.Blocks &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Files: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1046,6 +1089,7 @@ declare module '@strapi/types' {
       'api::about-us.about-us': ApiAboutUsAboutUs;
       'api::about-us-media.about-us-media': ApiAboutUsMediaAboutUsMedia;
       'api::article.article': ApiArticleArticle;
+      'api::audio.audio': ApiAudioAudio;
       'api::program.program': ApiProgramProgram;
     }
   }

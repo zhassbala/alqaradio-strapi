@@ -1002,6 +1002,78 @@ export interface ApiAudioAudio extends Schema.CollectionType {
   };
 }
 
+export interface ApiAudiobookAudiobook extends Schema.CollectionType {
+  collectionName: 'audiobooks';
+  info: {
+    singularName: 'audiobook';
+    pluralName: 'audiobooks';
+    displayName: 'Audiobook';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    Title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Attribute.UID<'api::audiobook.audiobook', 'Title'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Description: Attribute.Blocks &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Cover: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Files: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::audiobook.audiobook',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::audiobook.audiobook',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::audiobook.audiobook',
+      'oneToMany',
+      'api::audiobook.audiobook'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiProgramProgram extends Schema.CollectionType {
   collectionName: 'programs';
   info: {
@@ -1156,6 +1228,7 @@ declare module '@strapi/types' {
       'api::about-us-media.about-us-media': ApiAboutUsMediaAboutUsMedia;
       'api::article.article': ApiArticleArticle;
       'api::audio.audio': ApiAudioAudio;
+      'api::audiobook.audiobook': ApiAudiobookAudiobook;
       'api::program.program': ApiProgramProgram;
       'api::team-member.team-member': ApiTeamMemberTeamMember;
     }

@@ -842,61 +842,6 @@ export interface ApiAboutUsAboutUs extends Schema.SingleType {
   };
 }
 
-export interface ApiAboutUsMediaAboutUsMedia extends Schema.SingleType {
-  collectionName: 'about_us_medias';
-  info: {
-    singularName: 'about-us-media';
-    pluralName: 'about-us-medias';
-    displayName: 'About us Media';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    Title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    Content: Attribute.Blocks &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::about-us-media.about-us-media',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::about-us-media.about-us-media',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::about-us-media.about-us-media',
-      'oneToMany',
-      'api::about-us-media.about-us-media'
-    >;
-    locale: Attribute.String;
-  };
-}
-
 export interface ApiArticleArticle extends Schema.CollectionType {
   collectionName: 'articles';
   info: {
@@ -1302,7 +1247,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::about-us.about-us': ApiAboutUsAboutUs;
-      'api::about-us-media.about-us-media': ApiAboutUsMediaAboutUsMedia;
       'api::article.article': ApiArticleArticle;
       'api::audio.audio': ApiAudioAudio;
       'api::audiobook.audiobook': ApiAudiobookAudiobook;

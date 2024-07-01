@@ -4,10 +4,11 @@
   "info": {
     "singularName": "audiobook",
     "pluralName": "audiobooks",
-    "displayName": "Audiobook"
+    "displayName": "Audiobook",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {
     "i18n": {
@@ -43,11 +44,12 @@
       "type": "blocks"
     },
     "Cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -55,17 +57,17 @@
       }
     },
     "Files": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "audios"
       ],
-      "type": "media",
-      "multiple": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "required": false
+      }
     }
   }
 }

@@ -906,7 +906,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   pluginOptions: {
     i18n: {
@@ -949,7 +949,6 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::article.article',
       'oneToOne',
@@ -1008,9 +1007,10 @@ export interface ApiAudiobookAudiobook extends Schema.CollectionType {
     singularName: 'audiobook';
     pluralName: 'audiobooks';
     displayName: 'Audiobook';
+    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   pluginOptions: {
     i18n: {
@@ -1052,7 +1052,6 @@ export interface ApiAudiobookAudiobook extends Schema.CollectionType {
       }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::audiobook.audiobook',
       'oneToOne',
@@ -1074,6 +1073,73 @@ export interface ApiAudiobookAudiobook extends Schema.CollectionType {
   };
 }
 
+export interface ApiMediaAboutUsMediaAboutUs extends Schema.CollectionType {
+  collectionName: 'media_about_uses';
+  info: {
+    singularName: 'media-about-us';
+    pluralName: 'media-about-uses';
+    displayName: 'Media About Us';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    cover: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    url: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::media-about-us.media-about-us',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::media-about-us.media-about-us',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::media-about-us.media-about-us',
+      'oneToMany',
+      'api::media-about-us.media-about-us'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiProgramProgram extends Schema.CollectionType {
   collectionName: 'programs';
   info: {
@@ -1083,7 +1149,7 @@ export interface ApiProgramProgram extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   pluginOptions: {
     i18n: {
@@ -1116,9 +1182,14 @@ export interface ApiProgramProgram extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    url: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::program.program',
       'oneToOne',
@@ -1183,6 +1254,12 @@ export interface ApiTeamMemberTeamMember extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    description: Attribute.Blocks &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1229,6 +1306,7 @@ declare module '@strapi/types' {
       'api::article.article': ApiArticleArticle;
       'api::audio.audio': ApiAudioAudio;
       'api::audiobook.audiobook': ApiAudiobookAudiobook;
+      'api::media-about-us.media-about-us': ApiMediaAboutUsMediaAboutUs;
       'api::program.program': ApiProgramProgram;
       'api::team-member.team-member': ApiTeamMemberTeamMember;
     }

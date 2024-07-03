@@ -4,7 +4,8 @@
   "info": {
     "singularName": "media-about-us",
     "pluralName": "media-about-uses",
-    "displayName": "Media About Us"
+    "displayName": "Media About Us",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,7 +16,7 @@
     }
   },
   "attributes": {
-    "title": {
+    "Title": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -24,7 +25,7 @@
       "type": "string",
       "required": true
     },
-    "description": {
+    "Description": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -32,18 +33,18 @@
       },
       "type": "text"
     },
-    "cover": {
+    "Cover": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "required": true
+      }
     },
     "url": {
       "pluginOptions": {

@@ -1024,6 +1024,7 @@ export interface ApiMediaAboutUsMediaAboutUs extends Schema.CollectionType {
     singularName: 'media-about-us';
     pluralName: 'media-about-uses';
     displayName: 'Media About Us';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1034,20 +1035,20 @@ export interface ApiMediaAboutUsMediaAboutUs extends Schema.CollectionType {
     };
   };
   attributes: {
-    title: Attribute.String &
+    Title: Attribute.String &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    description: Attribute.Text &
+    Description: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    cover: Attribute.Media &
+    Cover: Attribute.Media &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {

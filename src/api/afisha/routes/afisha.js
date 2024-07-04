@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * audio router
+ * afisha router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::audio.audio');
+module.exports = createCoreRouter('api::afisha.afisha');

@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * audio service
+ * afisha service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::audio.audio');
+module.exports = createCoreService('api::afisha.afisha');

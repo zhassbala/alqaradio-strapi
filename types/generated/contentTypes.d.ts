@@ -842,12 +842,64 @@ export interface ApiAboutUsAboutUs extends Schema.SingleType {
   };
 }
 
+export interface ApiAfishaAfisha extends Schema.CollectionType {
+  collectionName: 'afishas';
+  info: {
+    singularName: 'afisha';
+    pluralName: 'afishas';
+    displayName: '\u0410\u0444\u0438\u0448\u0430';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    Title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Cover: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::afisha.afisha',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::afisha.afisha',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::afisha.afisha',
+      'oneToMany',
+      'api::afisha.afisha'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiArticleArticle extends Schema.CollectionType {
   collectionName: 'articles';
   info: {
     singularName: 'article';
     pluralName: 'articles';
-    displayName: 'Articles';
+    displayName: '\uFE0F\u0416\u0430\u04A3\u0430\u043B\u044B\u049B\u0442\u0430\u0440';
     description: '';
   };
   options: {
@@ -915,43 +967,12 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   };
 }
 
-export interface ApiAudioAudio extends Schema.CollectionType {
-  collectionName: 'audios';
-  info: {
-    singularName: 'audio';
-    pluralName: 'audios';
-    displayName: 'Audio';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    Title: Attribute.String;
-    File: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::audio.audio',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::audio.audio',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiAudiobookAudiobook extends Schema.CollectionType {
   collectionName: 'audiobooks';
   info: {
     singularName: 'audiobook';
     pluralName: 'audiobooks';
-    displayName: 'Audiobook';
+    displayName: '\u0410\u0443\u0434\u0438\u043E\u043A\u0456\u0442\u0430\u043F\u0442\u0430\u0440';
     description: '';
   };
   options: {
@@ -1091,7 +1112,7 @@ export interface ApiProgramProgram extends Schema.CollectionType {
   info: {
     singularName: 'program';
     pluralName: 'programs';
-    displayName: 'Program';
+    displayName: '\u0411\u0430\u0493\u0434\u0430\u0440\u043B\u0430\u043C\u0430\u043B\u0430\u0440';
     description: '';
   };
   options: {
@@ -1248,8 +1269,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::about-us.about-us': ApiAboutUsAboutUs;
+      'api::afisha.afisha': ApiAfishaAfisha;
       'api::article.article': ApiArticleArticle;
-      'api::audio.audio': ApiAudioAudio;
       'api::audiobook.audiobook': ApiAudiobookAudiobook;
       'api::media-about-us.media-about-us': ApiMediaAboutUsMediaAboutUs;
       'api::program.program': ApiProgramProgram;

@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * audio controller
+ * afisha controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::audio.audio');
+module.exports = createCoreController('api::afisha.afisha');

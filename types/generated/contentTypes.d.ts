@@ -1016,6 +1016,13 @@ export interface ApiAudiobookAudiobook extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    Date: Attribute.Date &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1160,6 +1167,13 @@ export interface ApiProgramProgram extends Schema.CollectionType {
       'oneToMany',
       'api::program-section.program-section'
     >;
+    Date: Attribute.Date &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

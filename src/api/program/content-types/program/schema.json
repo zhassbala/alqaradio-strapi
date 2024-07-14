@@ -78,6 +78,15 @@
       "relation": "oneToMany",
       "target": "api::program-section.program-section",
       "mappedBy": "program"
+    },
+    "Date": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date",
+      "required": true
     }
   }
 }
